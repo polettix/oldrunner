@@ -41,16 +41,31 @@
  */
 
 /* User keys. */
-#define ORKEY_MOVE_RIGHT     'l'
-#define ORKEY_MOVE_LEFT      'h'
-#define ORKEY_MOVE_DOWN      'j'
-#define ORKEY_MOVE_UP        'k'
-#define ORKEY_DIG_LEFT       's'
-#define ORKEY_DIG_RIGHT      'd'
-#define ORKEY_LEVEL_NEXT     CTRL('n')
-#define ORKEY_LEVEL_PREV     CTRL('p')
-#define ORKEY_SUICIDE        CTRL('g')
-#define ORKEY_EXIT           CTRL('d')
+#ifdef HAVE_NCURSES_H
+#  include <ncurses.h>
+#  define ORKEY_MOVE_RIGHT     KEY_RIGHT
+#  define ORKEY_MOVE_LEFT      KEY_LEFT
+#  define ORKEY_MOVE_DOWN      KEY_DOWN
+#  define ORKEY_MOVE_UP        KEY_UP
+#  define ORKEY_DIG_LEFT       's'
+#  define ORKEY_DIG_RIGHT      'd'
+#  define ORKEY_LEVEL_NEXT     CTRL('n')
+#  define ORKEY_LEVEL_PREV     CTRL('p')
+#  define ORKEY_SUICIDE        CTRL('g')
+#  define ORKEY_EXIT           CTRL('d')
+#else
+#  define ORKEY_MOVE_RIGHT     'l'
+#  define ORKEY_MOVE_LEFT      'h'
+#  define ORKEY_MOVE_DOWN      'j'
+#  define ORKEY_MOVE_UP        'k'
+#  define ORKEY_DIG_LEFT       's'
+#  define ORKEY_DIG_RIGHT      'd'
+#  define ORKEY_LEVEL_NEXT     CTRL('n')
+#  define ORKEY_LEVEL_PREV     CTRL('p')
+#  define ORKEY_SUICIDE        CTRL('g')
+#  define ORKEY_EXIT           CTRL('d')
+#endif
+
 
 /* To set game speed (timeout in microseconds). */
 #define OLDRUNNER_TIMEOUT    80000
