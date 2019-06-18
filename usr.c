@@ -109,6 +109,7 @@ usr_input (void)
           hero_move (MOV_FALL);
           break;
         }
+      usr_reset_input ();
 
       timer_get_time (&user_timer);
     }
